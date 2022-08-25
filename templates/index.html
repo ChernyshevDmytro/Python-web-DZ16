@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contacts Book</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+            
+      <nav
+        style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px"
+      >
+        <ul>
+          <li><a href="/persons/" role="button">Add Person or phone</a>
+        <form method="POST" action="/details"> 
+          <button type="submit">Find</button>     
+        </ul>
+
+      <div style="padding: 50px">
+        <label>
+          <input type="text" name="find" />
+        </label>
+      </div>
+          </li>
+      </nav>
+      </form>  
+      
+      <form method="GET">
+    
+      {% for person in persons%}
+      <ul>
+        <li>
+          {%if person%}
+          <a href="/details/{{person.id}}" role="button" class="outline"
+            >Name:{{person.name}}</a
+          >
+          <a href="/delete/{{person.id}}" role="button" class="contrast"
+            >Delete person</a
+          >
+          {% else %}
+
+          <a href="/details/{{person.id}}" role="button" class="secondary"
+            ><s>{{phones.phone}}</s></a          >
+         
+          {% endif %}
+        </li>
+      </ul>
+      
+     
+      {% endfor %}
+      </form> 
+    </main>
+  </body>
+</html>
